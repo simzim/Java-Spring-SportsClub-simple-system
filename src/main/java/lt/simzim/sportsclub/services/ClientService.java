@@ -12,20 +12,17 @@ import lt.simzim.sportsclub.repositories.ClientRepository;
 public class ClientService {
 	@Autowired
 	ClientRepository clientRepository;
-	
-	
+
 	public Client addClient(Client client) {
 		return clientRepository.save(client);
 	}
-	
-	public List<Client> getClients(){
+
+	public List<Client> getClients() {
 		return clientRepository.findAll();
 	}
-	
-	
-	
+
 	public Client updateClient(Client client) {
-		Client old=clientRepository.getById(client.getId());
+		Client old = clientRepository.getById(client.getId());
 		old.setName(client.getName());
 		old.setSurname(client.getSurname());
 		old.setPhone(client.getPhone());
@@ -33,14 +30,13 @@ public class ClientService {
 		clientRepository.save(old);
 		return old;
 	}
-	
+
 	public void deleteClient(Integer id) {
 		clientRepository.deleteById(id);
 	}
-	
+
 	public Client getClient(Integer id) {
 		return clientRepository.getById(id);
 	}
-	
 
 }

@@ -1,32 +1,44 @@
 package lt.simzim.sportsclub.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
-@Entity 
-@Table (name = "clients")
+import org.hibernate.validator.constraints.Length;
+
+@Entity
+@Table(name = "clients")
 public class Client {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)  // autoincrementas db
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // autoincrementas db
 	private Integer id;
-	
+
 	@Column(nullable = false, length = 64)
+	@Length(min = 3, max = 64, message = "Vardas turi būti ilgesnis nei 3 simboliai ir trumpesnis už 64 simbolius")
 	private String name;
-	
-	@Column(nullable = false, length = 64) 
+
+	@Column(nullable = false, length = 64)
+	@Length(min = 3, max = 64, message = "Pavardė turi būti ilgesnė nei 3 simboliai ir trumpesnis už 64 simbolius")
 	private String surname;
-	
+
 	@Column
+	@Email(message = "Netinkamas el. pašto formatas")
 	private String email;
-	
-	
+
+	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+	private List<Registration> registrations;
+
 	public Client(String name, String surname, String email, String phone) {
-	
+
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -34,7 +46,7 @@ public class Client {
 	}
 
 	public Client() {
-	
+
 	}
 
 	public Client(String name, String surname) {
@@ -84,10 +96,13 @@ public class Client {
 
 	@Column
 	private String phone;
-	
-	
-	
-	
 
+	public List<Registration> getRegistrations() {
+		return registrations;
+	}
+
+	public void setRegistrations(List<Registration> registrations) {
+		this.registrations = registrations;
+	}
 
 }
