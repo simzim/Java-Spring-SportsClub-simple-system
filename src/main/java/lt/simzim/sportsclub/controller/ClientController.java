@@ -28,6 +28,8 @@ public class ClientController {
 		return "client_lis";
 	}
 
+	
+	
 	@GetMapping("/new")
 	public String clientNew(Model model) {
 		model.addAttribute("client", new Client());
@@ -43,8 +45,8 @@ public class ClientController {
 
 		if (result.hasErrors()) {
 			System.out.println("Pagavau klaida");
-			model.addAttribute("client", new Client());
-			return "client_new";
+			
+		return "client_new";
 		}
 		clientService.addClient(client);
 		return "redirect:/client/";

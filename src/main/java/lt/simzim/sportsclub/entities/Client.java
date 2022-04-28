@@ -1,5 +1,4 @@
 package lt.simzim.sportsclub.entities;
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+
+
 
 @Entity
 @Table(name = "clients")
@@ -23,17 +25,24 @@ public class Client {
 	private Integer id;
 
 	@Column(nullable = false, length = 64)
+	@NotNull(message = "Vardas privalomas")
 	@Length(min = 3, max = 64, message = "Vardas turi būti ilgesnis nei 3 simboliai ir trumpesnis už 64 simbolius")
 	private String name;
 
 	@Column(nullable = false, length = 64)
+	@NotNull(message = "Pavardė privaloma")
 	@Length(min = 3, max = 64, message = "Pavardė turi būti ilgesnė nei 3 simboliai ir trumpesnis už 64 simbolius")
 	private String surname;
 
-	@Column
+	@Column(nullable = false)
+	@NotNull(message = "El. pa6tas privalomas")
 	@Email(message = "Netinkamas el. pašto formatas")
 	private String email;
 
+	@Column(nullable = false)
+	@NotNull(message = "Telefono numeris privalomas")
+	private String phone;
+	
 	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 	private List<Registration> registrations;
 
@@ -94,8 +103,7 @@ public class Client {
 		this.phone = phone;
 	}
 
-	@Column
-	private String phone;
+	
 
 	public List<Registration> getRegistrations() {
 		return registrations;

@@ -18,7 +18,7 @@
 				<div class="card">
 					<div class="card-header">Registracija</div>
 					<div class="card-body">
-						<form action="/registration/new" method="post"
+						<form th:action="/registration/new" method="post"
 							th:object="${registration}">
 							<div class="mb-3">
 								<label class="form-label">Klientas</label> <select
