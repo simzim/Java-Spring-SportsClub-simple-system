@@ -36,7 +36,6 @@
 									name="name"
 									th:value="*{name}" 
 									th:errorClass="is-invalid"
-									required="true"
 								>
 								<div class="alert alert-danger" th:if="${#fields.hasErrors('name')}">
 									<ul>

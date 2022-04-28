@@ -62,8 +62,19 @@ public class ClientController {
 
 	@PostMapping("/update/{id}")
 	public String clientUpdate(
-			@PathVariable("id") Integer id, 
-			@ModelAttribute Client c) {
+			@Valid 
+			@ModelAttribute Client c,
+			BindingResult result, 
+			@PathVariable("id") Integer id
+			) {
+		
+		if (result.hasErrors()) {
+			System.out.println("Pagavau klaida");
+			
+		return "client_update";
+		}
+		
+		
 		clientService.updateClient(c);
 		return "redirect:/client/";
 	}
