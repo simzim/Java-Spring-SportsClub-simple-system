@@ -31,7 +31,7 @@ public class Workout {
 	private String date;
 
 	@Column
-	@Min(value = 1, message = "minimalus lankytojų skaičius 1")
+	@Min(value = 1, message = "minimalus lankytojų skaičius 1 iki 100")
 	@Max(value = 100, message = "maksimalus lankytojų skaičius 100")
 	private Integer place;
 
