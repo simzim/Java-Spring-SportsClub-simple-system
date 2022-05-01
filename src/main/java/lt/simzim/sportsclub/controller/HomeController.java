@@ -23,6 +23,9 @@ public class HomeController {
 	@GetMapping("/")
 	public String home() {
 
+//		Client client = new Client("Simona", "Zim", "mano@pastas.lt", "+12385214741", "simzim", "admin123", "admin");
+//		clientService.addClient(client);
+		
 		return "home";
 	}
 

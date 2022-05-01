@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import lt.simzim.sportsclub.services.UserService;
+import lt.simzim.sportsclub.services.ClientService;
 
 
 @Configuration
@@ -18,7 +18,8 @@ import lt.simzim.sportsclub.services.UserService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
 	@Autowired
-	UserService userService;
+	ClientService clientService;
+	
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -26,10 +27,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		BCryptPasswordEncoder bc=new BCryptPasswordEncoder();	
 		
 		auth
-			.inMemoryAuthentication()
-				.withUser("admin").password(bc.encode("123")).roles("admin", "user")
-				.and()
-				.withUser("user").password(bc.encode("12345")).roles("user");		
+			.userDetailsService(this.clientService)
+			.passwordEncoder(bc);
+		
+//		auth
+//			.inMemoryAuthentication()
+//				.withUser("admin").password(bc.encode("123")).roles("admin", "user")
+//				.and()
+//				.withUser("user").password(bc.encode("12345")).roles("user");		
 	}
 
 	@Override
