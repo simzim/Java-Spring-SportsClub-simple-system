@@ -20,7 +20,7 @@
 					<div class="card-header">Pridėti naują užsiėmimą</div>
 					<div class="card-body">
 						<form action="/workout/new" method="post" th:object="${workout}">
-						
+							<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 							<div class="mb-3">
 								<label class="form-label">Užsiėmimo pavadinimas</label> 
 								<input

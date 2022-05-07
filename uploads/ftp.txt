@@ -1,0 +1,23 @@
+http://demo20.lt.krienas.serveriai.lt/index2.html
+
+
+Host: krienas.serveriai.lt
+Username: demo20
+psw: afFGF53-ashp
+
+
+Kodo pvz tik mano kodas
+http://demo20.lt.krienas.serveriai.lt/pamarioNT/
+Blokas idetas pagrindiniame puslapyje
+http://demo20.lt.krienas.serveriai.lt/pamarioNT/index2.html
+Blokas idetas Projektų puslapyje 
+http://demo20.lt.krienas.serveriai.lt/pamarioNT/index3.html
+
+
+
+Problemos: 
+taip ir nesupratau, kodėl ir pagrindinis puslapis pameta font'ą po to kai persikopinu ji pas save.
+Kol dar nieko neįterpinėju ir nepridedu stiliaus 
+
+
+http://demo20.lt.krienas.serveriai.lt/pamarioNT_projektas/

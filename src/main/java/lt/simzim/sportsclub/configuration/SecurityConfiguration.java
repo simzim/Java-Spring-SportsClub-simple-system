@@ -43,16 +43,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeRequests()
 				.antMatchers("/").permitAll()
-				.antMatchers("/client/new").hasAnyRole("admin")
-				.antMatchers("/workout/new").hasAnyRole("admin")
-				.antMatchers("/registration/new").hasAnyRole("admin")
-				.antMatchers("/client/update/*").hasAnyRole("admin")
-				.antMatchers("/workout/update/*").hasAnyRole("admin")
-				.antMatchers("/registration/update/*").hasAnyRole("admin")
-				.antMatchers("/client/delete/*").hasAnyRole("admin")
-				.antMatchers("/workout/delete/*").hasAnyRole("admin")
-				.antMatchers("/registration/delete/*").hasAnyRole("admin")
-				
 				.antMatchers("/client/").permitAll()
 				.antMatchers("/workout/").permitAll()
 				.antMatchers("/registration/").permitAll()
@@ -60,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				
 				.antMatchers("/login*").permitAll()
 				.antMatchers("/register*").permitAll()
-//				.anyRequest().authenticated();
+				.anyRequest().authenticated()
 		
 		.and()
 		.formLogin()
@@ -71,7 +61,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.logout()
 			.logoutUrl("/logout")
 			.logoutSuccessUrl("/");
-				
 	}
 
 
