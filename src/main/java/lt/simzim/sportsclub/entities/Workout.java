@@ -38,6 +38,11 @@ public class Workout {
 	@Column
 	@Length(min = 3, max = 64, message = " Užsiėmimo vietos pavadinimas turi būti ilgesnis nei 3 simboliai ir trumpesnis už 64 simbolius")
 	private String location;
+	
+	
+	@Column
+	private String fileName;
+	
 
 	@OneToMany(mappedBy = "workout", fetch = FetchType.EAGER)
 	private List<Registration> registrations;
@@ -51,6 +56,29 @@ public class Workout {
 		this.date = date;
 		this.place = place;
 		this.location = location;
+	}
+
+	
+	public Workout(
+			@Length(min = 3, max = 64, message = "Užsiėmimo pavadinimas turi būti ilgesnis nei 3 simboliai ir trumpesnis už 64 simbolius") String name,
+			String date,
+			@Min(value = 1, message = "minimalus lankytojų skaičius 1 iki 100") @Max(value = 100, message = "maksimalus lankytojų skaičius 100") Integer place,
+			@Length(min = 3, max = 64, message = " Užsiėmimo vietos pavadinimas turi būti ilgesnis nei 3 simboliai ir trumpesnis už 64 simbolius") String location,
+			String fileName) {
+		
+		this.name = name;
+		this.date = date;
+		this.place = place;
+		this.location = location;
+		this.fileName = fileName;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public Integer getId() {

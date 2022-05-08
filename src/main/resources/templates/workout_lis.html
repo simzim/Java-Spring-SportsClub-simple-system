@@ -27,6 +27,7 @@
 									<th>Užsiemimo data</th>
 									<th>Vietų skaičius</th>
 									<th>Kur vyks</th>
+									<th>Aprašymas</th>
 									<th>Veiksmai</th>
 								</tr>
 								<tr th:each="workout: ${workouts}">
@@ -34,6 +35,13 @@
 									<td th:text="${workout.date}"></td>
 									<td th:text="${workout.place}"></td>
 									<td th:text="${workout.location}"></td>
+									
+									  <td>
+						  			<a th:href="'/workout/agreement/'+${workout.id}" class="btn btn-success">Parsiųsti</a>
+						  	</td>
+									
+									
+									
 									<td style="width: 200px;"><a
 										th:href="'/workout/update/'+${workout.id}"
 										class="btn btn-success">Redaguoti</a> <a

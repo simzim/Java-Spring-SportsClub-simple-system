@@ -41,7 +41,9 @@ public class FileStorageService {
 		try {
 			Path filePath=this.storageLocation.resolve(filename).normalize();
 			Resource resource=new UrlResource(filePath.toUri());
+			
 			if (!Files.exists(filePath)) return null;
+			
 			return resource;
 		}catch (IOException e) {
 			System.out.println("Įvyko klaida paimant failą");
